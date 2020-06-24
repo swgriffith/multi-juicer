@@ -36,6 +36,8 @@ balancer:
   tag: latest
   replicas: 1
   service:
+    annotations:
+      {}
     # Kubernetes service type
     type: ClusterIP
     # internal cluster service IP

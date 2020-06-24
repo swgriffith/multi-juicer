@@ -4,6 +4,10 @@ metadata:
   name: juice-balancer
   labels:
     {{- include "multi-juicer.labels" . | nindent 4 }}
+  {{- with .Values.balancer.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.balancer.service.type }}
 {{- if (or (eq .Values.balancer.service.type "ClusterIP") (empty .Values.balancer.service.type)) }}
